@@ -2,6 +2,6 @@
 # Input example: ruby yourscript.rb 'aaa'
 
 array = ARGV
-#  array.sample()
+p array.sample
 # or this:
-p array.shuffle.first
+# p array.shuffle.first
