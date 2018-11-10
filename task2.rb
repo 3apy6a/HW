@@ -2,7 +2,13 @@
 # після чого виводить текст з файла в заданому кольорі
 # Input example: ruby yourscript.rb red some.txt
 
+require 'colorize'
+
 class String
+  def initialize(color)
+    @color = color
+  end
+
   def red
     colorize(self, "\e[1m\e[31m")
   end
@@ -31,10 +37,11 @@ class String
     colorize(self, "\e[1m\e[35m")
   end
 
-  def colorize(text, color_code)
+  def colorize(color_code, text)
     "#{color_code}#{text}\e[0m"
   end
 end
+
 if ARGV.length != 2
   puts 'We need exactly two parameter. Color end the name of file'
   exit

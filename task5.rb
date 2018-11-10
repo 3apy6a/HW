@@ -1,22 +1,17 @@
 # Скрипт приймає назву файлу та рядок, треба перший номер рядка з файла,
 # де зустрічається заданий рядок
-# Input example: ruby yourscript.rb file.txt somestring
+# Input example: ruby yourscript.rb text.txt somestring
 
-if ARGV.length != 2
-  puts 'We need exactly two parameter. The name of a file and string from file'
-  exit
-end
-filename = ARGV[]
+filename = ARGV[0]
+find_string = ARGV[1..-1].join(' ')
 puts "Going to open '#{filename}'"
 
-fh = open filename
+text = open filename
 
-fh.each { |line| puts line }
+text.each_with_index do |line, index|
+  if line.include?(find_string)
+    p "Number of the required line: #{index}"
+  end
+end
 
-fh.close
-## !!!!!!!!!!!!!!!
-# cho_ishem = gets.chomp
-# buffer = IO.readlines("somefile.txt")
-# buffer.each do |ln|
-# puts ln if /#{cho_ishem}(.*)\s/ == ln
-# end
+text.close

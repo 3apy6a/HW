@@ -3,5 +3,3 @@
 
 array = ARGV
 p array.sample
-# or this:
-# p array.shuffle.first

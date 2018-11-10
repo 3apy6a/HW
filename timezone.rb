@@ -5,28 +5,16 @@
 require 'date'
 
 class Timezones
-  def initialize(one)
-    @first_number = one
+  def initialize(time_in)
+    @time_in = time_in
   end
 
-  def eet
-    @first_number = `zdump EET`
+  def method_missing(new_method)
+    time_zone(new_method)
   end
 
-  def cet
-    @first_number = `zdump CET`
-  end
-
-  def msk
-    @first_number = `zdump MSK`
-  end
-
-  def gmt
-    @first_number = `zdump GMT`
-  end
-
-  def acst
-    @first_number = `zdump ACST`
+  def time_zone(zone)
+    `zdump "#{zone.upcase}"`
   end
 end
 
@@ -36,8 +24,4 @@ if ARGV.length != 1
   puts 'We need exactly 1 arguments!'
   exit
 end
-if timezona.respond_to?(ARGV[0])
-  puts timezona.send(ARGV[0])
-else
-  p 'Available timezones is: EET, CET, MSK, GMT, ACST.'
-end
+puts timezona.send(ARGV[0])
