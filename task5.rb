@@ -1,5 +1,3 @@
-# Скрипт приймає назву файлу та рядок, треба перший номер рядка з файла,
-# де зустрічається заданий рядок
 # Input example: ruby yourscript.rb text.txt somestring
 
 filename = ARGV[0]
