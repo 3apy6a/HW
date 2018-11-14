@@ -5,12 +5,13 @@ find_string = ARGV[1..-1].join(' ')
 puts "Going to open '#{filename}'"
 
 text = open filename
-
-text.each_with_index do |line, number_of_string|
-  if line.include?(find_string)
-    p "Number of the required line: #{number_of_string}"
-    exit
+begin
+  text.each.with_index(1) do |line, number_of_string|
+    if line.include?(find_string)
+      p "Number of the required line: #{number_of_string}"
+      exit
+    end
   end
+ensure
+  text&.close
 end
-
-text.close
